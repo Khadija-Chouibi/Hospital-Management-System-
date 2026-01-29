@@ -1,0 +1,158 @@
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Set full background with a photo */
+body {
+  height: 100vh;
+  background-image: url('https://web-assets.bcg.com/71/52/147fa0a94684b7568266ecaa4763/ooking-ahead-the-outlook-for-australias-private-hospitals.jpg'); /* Replace with your own image if you like */
+  background-size: cover;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container for login form */
+.login-container {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  width: 90%;
+  max-width: 350px;
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+/* Heading */
+.login-container h1 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #222;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+/* Input fields and select */
+.login-container input,
+.login-container select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.login-container input:focus,
+.login-container select:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button */
+.login-container button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007BFF;
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-container button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Dashboard container */
+.dashboard-container {
+  max-width: 600px;
+  margin: 30px auto;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.8s ease forwards;
+  opacity: 0;
+}
+
+.dashboard-container h1,
+.dashboard-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #222;
+  letter-spacing: 0.03em;
+  font-weight: 600;
+}
+
+/* Appointment form */
+#appointmentForm input,
+#appointmentForm select,
+#appointmentForm button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+#appointmentForm input:focus,
+#appointmentForm select:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+#appointmentForm button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#appointmentForm button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Appointment list */
+#appointmentsList ul {
+  list-style: none;
+  padding: 0;
+}
+
+#appointmentsList li {
+  background-color: #f1f1f1;
+  margin-bottom: 15px;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

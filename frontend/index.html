@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hospital App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section id="loginView">
+    <form id="loginForm">
+      <input name="email" type="email" placeholder="Email" required>
+      <input name="password" type="password" placeholder="Password" required>
+      <select name="role" required>
+        <option value="nurse">Nurse</option>
+        <option value="doctor">Doctor</option>
+        <option value="admin">Admin</option>
+      </select>
+      <button type="submit">Login</button>
+    </form>
+  </section>
+
+  <section id="nurseView" style="display:none;">
+    <h2>Nurse Dashboard</h2>
+    <form id="appointmentForm">
+      <input name="doctorId" placeholder="Doctor ID" required>
+      <input name="patientId" placeholder="Patient ID" required>
+      <input name="nurseId" placeholder="Nurse ID" required>
+      <input name="patientName" placeholder="Patient Name" required>
+      <input name="datetime" type="datetime-local" required>
+      <input name="diagnosis" placeholder="Diagnosis" required>
+      <select name="status" required>
+        <option value="upcoming">Upcoming</option>
+        <option value="completed">Completed</option>
+        <option value="canceled">Canceled</option>
+      </select>
+      <button type="submit">Add Appointment</button>
+    </form>
+    <ul id="nurseAppointments"></ul>
+    <button onclick="logout()">Logout</button>
+  </section>
+
+  <section id="doctorView" style="display:none;">
+    <h2>Doctor Dashboard</h2>
+    <ul id="doctorAppointments"></ul>
+    <button onclick="logout()">Logout</button>
+  </section>
+
+  <section id="adminView" style="display:none;">
+    <h2>Admin Dashboard</h2>
+    <ul id="adminAppointments"></ul>
+    <button onclick="logout()">Logout</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+

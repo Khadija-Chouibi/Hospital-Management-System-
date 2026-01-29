@@ -1,0 +1,77 @@
+
+-- USERS
+CREATE TABLE IF NOT EXISTS Users (
+    userID SERIAL PRIMARY KEY,
+    firstName TEXT NOT NULL,
+    lastName TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    role TEXT CHECK(role IN ('nurse', 'doctor', 'patient', 'admin')) NOT NULL
+);
+
+-- DOCTOR
+CREATE TABLE IF NOT EXISTS Doctor (
+    doctorID SERIAL PRIMARY KEY,
+    userID INTEGER NOT NULL UNIQUE,
+    specialty TEXT,
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE
+);
+
+-- NURSE
+CREATE TABLE IF NOT EXISTS Nurse (
+    nurseID SERIAL PRIMARY KEY,
+    userID INTEGER NOT NULL UNIQUE,
+    specialty TEXT,
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE
+);
+
+-- PATIENT
+CREATE TABLE IF NOT EXISTS Patient (
+    patientID SERIAL PRIMARY KEY,
+    userID INTEGER NOT NULL UNIQUE,
+    medicalRecordNumber TEXT NOT NULL UNIQUE,
+    information TEXT,
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE
+);
+
+-- ADMIN
+CREATE TABLE IF NOT EXISTS Admin (
+    adminID SERIAL PRIMARY KEY,
+    userID INTEGER NOT NULL UNIQUE,
+    FOREIGN KEY (userID) REFERENCES Users(userID) ON DELETE CASCADE
+);
+
+-- APPOINTMENT
+CREATE TABLE IF NOT EXISTS Appointment (
+    appointmentID SERIAL PRIMARY KEY,
+    doctorID INTEGER NOT NULL,
+    patientID INTEGER NOT NULL,
+    nurseID INTEGER,
+    dateTime TIMESTAMP NOT NULL,
+    status TEXT CHECK(status IN ('upcoming', 'completed', 'canceled')) NOT NULL,
+    diagnosis TEXT,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (doctorID) REFERENCES Doctor(doctorID),
+    FOREIGN KEY (patientID) REFERENCES Patient(patientID),
+    FOREIGN KEY (nurseID) REFERENCES Nurse(nurseID)
+);
+
+-- LOGIN LOG
+CREATE TABLE IF NOT EXISTS LoginLog (
+    logID SERIAL PRIMARY KEY,
+    userID INTEGER NOT NULL,
+    loginTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    success BOOLEAN NOT NULL,
+    FOREIGN KEY (userID) REFERENCES Users(userID)
+);
+
+-- DOCTOR VIEW (instead of reserved word "View")
+CREATE TABLE IF NOT EXISTS DoctorView (
+    doctorID INTEGER NOT NULL,
+    appointmentID INTEGER NOT NULL,
+    viewDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (doctorID, appointmentID),
+    FOREIGN KEY (doctorID) REFERENCES Doctor(doctorID) ON DELETE CASCADE,
+    FOREIGN KEY (appointmentID) REFERENCES Appointment(appointmentID) ON DELETE CASCADE
+);

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nurse Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <h1>Nurse Dashboard</h1>
+
+    <form id="appointmentForm">
+      <h2>Add New Appointment</h2>
+
+      <input type="text" name="doctorId" placeholder="Doctor ID" required />
+      <input type="text" name="patientId" placeholder="Patient ID" required />
+      <input type="text" name="nurseId" placeholder="Nurse ID" required />
+      <input type="datetime-local" name="datetime" required />
+      <input type="text" name="diagnosis" placeholder="Diagnosis" required />
+      
+      <select name="status" required>
+        <option value="" disabled selected>Select Status</option>
+        <option value="upcoming">Upcoming</option>
+        <option value="completed">Completed</option>
+        <option value="canceled">Canceled</option>
+      </select>
+
+      <button type="submit">Add Appointment</button>
+    </form>
+
+    <div id="appointmentsList">
+      <h2>All Appointments</h2>
+      <ul id="nurseAppointments"></ul>
+    </div>
+  </div>
+
+  <script src="nurse_script.js"></script>
+</body>
+</html>
+
